@@ -1,0 +1,31 @@
+FUNCTION binary_search(array, suchwert)
+    start = 0
+    ende = array.length - 1
+
+    while start <= ende
+        mitte = start + (ende - start) / 2
+
+        if array[mitte] == suchwert
+            return mitte
+        else
+            if array[mitte] > suchwert
+                start = mitte - 1
+            else
+                ende = mitte + 1
+
+    return nicht gefunden
+END FUNCTION binary_search
+
+
+FUNCTION binary_search(array, suchwert, start, ende)
+    if ende < start return nicht gefunden
+    mitte = (start + ende) / 2
+
+    if array[mitte] == suchwert
+        return mitte
+    else
+        if array[mitte] > suchwert
+            return binary_search(array, suchwert, start, mitte-1)
+        else
+            return binary_search(array, suchwert, mitte+1, ende)
+END FUNCTION binary_search
