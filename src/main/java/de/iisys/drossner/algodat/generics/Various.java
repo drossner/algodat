@@ -6,6 +6,7 @@ import java.util.List;
 public class Various {
 
     public static void main(String[] args) {
+
         Number[] numbera = new Double[1]; //geht (Arrays sind kovariant>
         //List<Number> numberl = new ArrayList<Double>(); //geht nicht (invariant)
 

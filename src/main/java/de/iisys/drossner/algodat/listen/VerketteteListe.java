@@ -18,6 +18,21 @@ public class VerketteteListe<T> implements CoolList<T> {
     }
 
     @Override
+    public void insert(T data, int pos) {
+        if(pos == 0 || head == null) insert(data);
+        else{
+            int i = 1;
+            Node<T> current = head;
+            while (current.next != null && ++i < pos){
+                current = current.next;
+            }
+            Node<T> temp = new Node<>(data);
+            temp.next = current.next;
+            current.next = temp;
+        }
+    }
+
+    @Override
     public T delete(Function<T, Boolean> func) {
         Node<T> current = head;
         //Sonderfall delete head
