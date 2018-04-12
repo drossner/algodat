@@ -1,8 +1,9 @@
 package de.iisys.drossner.algodat.listen;
 
+import java.util.EmptyStackException;
 import java.util.function.Function;
 
-public class VerketteteListe<T> implements CoolList<T> {
+public class VerketteteListe<T> implements CoolList<T>, Stack<T> {
 
     private Node<T> head;
 
@@ -74,6 +75,29 @@ public class VerketteteListe<T> implements CoolList<T> {
             current = current.next;
         }
         System.out.println();
+    }
+
+    @Override
+    public void push(T e) {
+        this.insert(e, 0);
+    }
+
+    @Override
+    public T pop() {
+        if(head == null) throw new EmptyStackException();
+        T ret = head.data;
+        head = head.next;
+        return ret;
+    }
+
+    @Override
+    public boolean isFull() {
+        return false;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return head == null;
     }
 
     private class Node<T>{
