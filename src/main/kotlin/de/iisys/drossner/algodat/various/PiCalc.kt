@@ -33,5 +33,5 @@ fun calcDist(a: Point, b: Point) = Math.sqrt( (a.x - b.x).pow(2) + (a.y - b.y).p
 data class Point(val x: Double, val y: Double)
 
 fun main(args: Array<String>) {
-    println(calcPi(100_000_000))
+    println(calcPi(500_000_000))
 }
