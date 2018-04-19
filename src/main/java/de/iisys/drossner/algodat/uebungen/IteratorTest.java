@@ -39,7 +39,7 @@ public class IteratorTest {
     }
 
     public static void sort1(List<String> list){
-        list.sort((o1, o2) -> o1.compareToIgnoreCase(o2));
+        list.sort((o1, o2) -> o1.length() - o2.length());
     }
 
     public static void sort2(List<String> list){
