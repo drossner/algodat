@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class AvlTree<T extends Comparable<? super T>> {
 
@@ -133,8 +134,6 @@ public class AvlTree<T extends Comparable<? super T>> {
         }
         node.right = rchild.left;
         rchild.left = node;
-        //node.bf -= 1;// + (node.bf > 0? 1 : 0);
-        //rchild.bf -= 1 + (rchild.bf < 0? 1 : 0);
     }
 
     private void rotRight(Node parent, Node node){
@@ -150,16 +149,13 @@ public class AvlTree<T extends Comparable<? super T>> {
         }
         node.left = lchild.right;
         lchild.right = node;
-        //node.bf += 1;// + (node.bf < 0? 1 : 0); // < 0 sucks
-        //lchild.bf += 1 + (lchild.bf > 0? 1 : 0);
     }
 
     public List<T> leveltraversal(){
         List<T> ret = new LinkedList<>();
-        List<Node> lvl = new ArrayList<>();
+        Queue<Node> lvl = new LinkedList<>();
         lvl.add(root);
-        for(int i = 0; i < lvl.size(); i++){
-            Node curr = lvl.get(i);
+        for(Node curr; (curr = lvl.poll()) != null;){
             ret.add(curr.data);
             if(curr.left != null) lvl.add(curr.left);
             if(curr.right != null) lvl.add(curr.right);
