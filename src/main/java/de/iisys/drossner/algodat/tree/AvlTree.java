@@ -2,7 +2,6 @@ package de.iisys.drossner.algodat.tree;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -29,7 +28,7 @@ public class AvlTree<T extends Comparable<? super T>> {
 
     private Node root;
 
-    public void insert(T data){
+    public void insert(T data) {
         //encapsulate in new node
         Node toinsert = new Node(data);
         if(root == null){
@@ -39,11 +38,14 @@ public class AvlTree<T extends Comparable<? super T>> {
         }
     }
 
-    private byte insert(Node parent, Node node, Node toinsert) {
+    protected byte insert(Node parent, Node node, Node toinsert) {
         //care about duplicate keys..
         if(toinsert.compareTo(node) == 0){
-            if(parent.left == node) parent.left = toinsert;
+            if(parent == null) root = toinsert;
+            else if(parent.left == node) parent.left = toinsert;
             else parent.right = toinsert;
+            toinsert.left = node.left;
+            toinsert.right = node.right;
             return 0;
         }
         Node left = node.left;
@@ -161,5 +163,18 @@ public class AvlTree<T extends Comparable<? super T>> {
             if(curr.right != null) lvl.add(curr.right);
         }
         return ret;
+    }
+
+    public List<T> inordertraversal(){
+        List<T> ret = new LinkedList<>();
+        inordertraversal(ret, root);
+        return ret;
+    }
+
+    private void inordertraversal(List<T> list, Node node){
+        if(node == null) return;
+        inordertraversal(list, node.left);
+        list.add(node.data);
+        inordertraversal(list, node.right);
     }
 }
