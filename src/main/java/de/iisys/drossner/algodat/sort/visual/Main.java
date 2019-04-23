@@ -23,8 +23,8 @@ public class Main extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         //Sorter sorter = new VizBubbleSorter();
-        Sorter sorter = new VizQuickSorter();
-        //Sorter sorter = new VizShellSorter();
+       // Sorter sorter = new VizQuickSorter();
+        Sorter sorter = new VizShellSorter();
 
         Pane root = new Pane();
         canvas = new Canvas(XVAL, YVAL);

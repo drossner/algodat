@@ -10,7 +10,7 @@ import de.iisys.drossner.algodat.sort.MergeSortKt;
 public class Messen {
 
     public static void main(String[] args) {
-        int[] a = new int[10_000];
+        int[] a = new int[160_000];
         for (int i = 0; i < a.length; i++) {
             a[i] = (int) (Math.random() * (a.length * 10));
         }
