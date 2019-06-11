@@ -56,6 +56,7 @@ public class BasicTree {
 
     public void delete(String key){
         //zunächst finden inkl. parent, ist der gesuchte Knoten root, ist parent null
+        //Annahme: key ist im Baum vorhanden, ansonsten muss Implementierung mod. werden
         Node parent = this.root.data.compareTo(key) == 0? null : findParent(this.root, key);
         Node del;
         //aus parent den eigentlich zu löschenden Knoten ableiten
@@ -100,6 +101,7 @@ public class BasicTree {
     }
 
     private Node findParent(Node start, String key) {
+        //Annahme: key ist im Baum vorhanden, ansonsten muss Implementierung mod. werden
         if(start.data.compareTo(key) < 0){
             if(start.right.data.compareTo(key) == 0) return start;
             return findParent(start.right, key);
