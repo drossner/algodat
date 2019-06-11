@@ -60,7 +60,7 @@ public class BasicTree {
         Node parent = this.root.data.compareTo(key) == 0? null : findParent(this.root, key);
         Node del;
         //aus parent den eigentlich zu löschenden Knoten ableiten
-        if(parent == null && this.root.data.compareTo(key) == 0) del = this.root;
+        if(parent == null) del = this.root;
         else del = parent != null
                 && parent.left != null
                 && parent.left.data.compareTo(key) == 0? parent.left : parent.right;
