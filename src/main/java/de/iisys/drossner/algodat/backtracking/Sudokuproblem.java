@@ -8,7 +8,7 @@ public class Sudokuproblem {
 
     public List<byte[][]> solve(byte[][] sudoku, int limit){
         List<byte[][]> solutions = new LinkedList<>();
-        solve(solutions, sudoku, 0, limit);
+        solve(solutions, sudoku, findNext(sudoku, 0 ,0), limit);
         return solutions;
     }
 
@@ -38,7 +38,7 @@ public class Sudokuproblem {
         return limit;
     }
 
-    private int findNext(byte[][] sudoku, int x, int y){
+    public int findNext(byte[][] sudoku, int x, int y){
         int val = y*sudoku.length + x;
         while(val < sudoku.length * sudoku.length &&
                 sudoku[val / sudoku.length][val % sudoku.length] != 0) val++;

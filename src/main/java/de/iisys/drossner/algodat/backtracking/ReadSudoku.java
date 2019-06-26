@@ -25,6 +25,9 @@ public class ReadSudoku {
         Sudokuproblem solver = new Sudokuproblem();
         List<byte[][]> liste = solver.solve(sudoku);
         sudoku = liste.get(0);
+
+        //VLSolver solver = new VLSolver();
+        //solver.solve(sudoku);
         for (int i = 0; i < sudoku.length; i++) {
             for (int j = 0; j < sudoku.length; j++) {
                 System.out.print(sudoku[i][j]+" ");
