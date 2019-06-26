@@ -79,15 +79,15 @@ public class VerketteteListe<T> implements CoolList<T>, Stack<T> {
 
     @Override
     public void push(T e) {
-        this.insert(e, 0);
+        insert(e);
     }
 
     @Override
     public T pop() {
-        if(head == null) throw new EmptyStackException();
-        T ret = head.data;
+        if(isEmpty()) return null;
+        Node<T> tmp = head;
         head = head.next;
-        return ret;
+        return tmp.data;
     }
 
     @Override
