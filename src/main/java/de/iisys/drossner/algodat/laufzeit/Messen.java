@@ -2,6 +2,8 @@ package de.iisys.drossner.algodat.laufzeit;
 
 import de.iisys.drossner.algodat.sort.MergeSortKt;
 
+import java.util.Arrays;
+
 /**
  * created at 01.02.18
  *
@@ -16,7 +18,8 @@ public class Messen {
         }
         //aktuelle Zeit
         long start = System.currentTimeMillis();
-        selectionSort(a); //50k to 100k
+        //selectionSort(a); //50k to
+        Arrays.sort(a);
         //MergeSortKt.mergesort(a, 0, a.length); //for mergesort 20kk to 10kk
         long duration = System.currentTimeMillis() - start;
 
@@ -26,16 +29,16 @@ public class Messen {
 
     public static void selectionSort(int[] array){
         for (int i = 0; i < array.length - 1; i++){
-            int kleinste = i;
+            int lo = i;
             for (int k = i + 1; k < array.length; k++){
-                if(array[k] < array[kleinste]){
-                    kleinste = k;
+                if(array[k] < array[lo]){
+                    lo = k;
                 }
             }
-            if(kleinste != i){
+            if(lo != i){
                 int tmp = array[i];
-                array[i] = array[kleinste];
-                array[kleinste] = tmp;
+                array[i] = array[lo];
+                array[lo] = tmp;
             }
         }
     }
